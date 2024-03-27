@@ -5,7 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09ffe75c-01fe-4feb-9dae-9fd3bdebfc53" name="Changes" comment="Init.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/commands/ExampleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/host/plas/commands/ExampleCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/adapters/placeholderapi/PlaceholderApiAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/adapters/placeholderapi/PlaceholderApiHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/adapters/placeholderapi/PlaceholderChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/adapters/spigot/SpigotAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/adapters/spigot/SpigotListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/commands/GrantCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/commands/ReloadCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/commands/RevokeCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/configs/QuestConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/configs/upgrades.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/Quest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/QuestManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/players/QuestPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/require/Requirement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/require/RequirementType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/reward/Reward.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/database/Keeper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/database/MyLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/events/QuestsListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/events/own/BreakBlockEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/quests.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/ExampleModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/host/plas/StreamQuests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/commands/ExampleCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/configs/ExampleConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/events/ExampleListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/events/own/ExampleEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/ratapi/ExampleExpansion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/host/plas/ratapi/QuestExpansion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +46,26 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="StreamQuests" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -30,9 +80,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2UnG1iNypnPzPI1o3FUnBlb6UyP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -41,19 +91,31 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.StreamQuests [clean build].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "semeru-11",
+    "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="host.plas.commands" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="ExampleModule [clean build]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+    <configuration name="StreamQuests [clean build]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -72,6 +134,12 @@
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <EXTENSION ID="com.intellij.execution.ExternalSystemRunConfigurationJavaExtension">
+        <extension name="com.fapiko.jetbrains.plugins.better_direnv.runconfigs.IdeaRunConfigurationExtension">
+          <option name="DIRENV_ENABLED" value="false" />
+          <option name="DIRENV_TRUSTED" value="false" />
+        </extension>
+      </EXTENSION>
       <DebugAllEnabled>false</DebugAllEnabled>
       <RunAsTest>false</RunAsTest>
       <method v="2" />
@@ -86,6 +154,11 @@
       <option name="presentableId" value="Default" />
       <updated>1693567718873</updated>
       <workItem from="1693567720946" duration="2782000" />
+      <workItem from="1710916559785" duration="8607000" />
+      <workItem from="1711053808758" duration="2925000" />
+      <workItem from="1711153763283" duration="914000" />
+      <workItem from="1711210381242" duration="4094000" />
+      <workItem from="1711428314092" duration="28123000" />
     </task>
     <task id="LOCAL-00001" summary="Init.">
       <option name="closed" value="true" />
@@ -104,5 +177,26 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init." />
     <option name="LAST_COMMIT_MESSAGE" value="Init." />
+  </component>
+  <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
+    <option name="sizePresets">
+      <list>
+        <SizePreset>
+          <option name="caption" value="Phone" />
+          <option name="height" value="568" />
+          <option name="width" value="320" />
+        </SizePreset>
+        <SizePreset>
+          <option name="caption" value="Tablet" />
+          <option name="height" value="1024" />
+          <option name="width" value="768" />
+        </SizePreset>
+        <SizePreset>
+          <option name="caption" value="Desktop" />
+          <option name="height" value="900" />
+          <option name="width" value="1440" />
+        </SizePreset>
+      </list>
+    </option>
   </component>
 </project>

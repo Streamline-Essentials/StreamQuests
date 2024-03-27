@@ -3,23 +3,42 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-group rootProject.properties['group']
-version rootProject.properties['version']
+group properties['group']
+version properties['version']
 
 repositories {
     mavenCentral()
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url = 'https://oss.sonatype.org/content/repositories/central' }
     maven { url = 'https://jitpack.io' }
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+
+        // As of Gradle 5.1, you can limit this to only those
+        // dependencies you expect from it
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+        }
+    }
+    maven {
+        url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+    }
 }
 
 dependencies {
-    // The Base
-    compileOnly 'com.github.server-utilities:TheBase:master-SNAPSHOT'
-    annotationProcessor 'com.github.server-utilities:TheBase:master-SNAPSHOT'
+    // Spigot API
+    compileOnly 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
+
+//    // The Base
+//    compileOnly 'com.github.Server-Utilities:TheBase:master-SNAPSHOT'
+//    annotationProcessor 'com.github.Server-Utilities:TheBase:master-SNAPSHOT'
 
     // LuckPerms
     compileOnly 'net.luckperms:api:5.4'
+
+    // PlaceholderAPI
+    compileOnly 'me.clip:placeholderapi:2.11.5'
 
     // StreamlineCore
     boolean includeBapi = rootProject.properties['include-bapi'].toString().toBoolean()
@@ -39,17 +58,19 @@ java {
 
 shadowJar {
     manifest {
-        attributes 'Plugin-Class': rootProject.properties['class'].toString() + '.' + rootProject.name.toString()
-        attributes 'Plugin-Id': rootProject.properties['id']
-        attributes 'Plugin-Version': rootProject.version
-        attributes 'Plugin-Requires': rootProject.properties['requires']
-        attributes 'Plugin-Dependencies': rootProject.properties['dependencies']
-        attributes 'Plugin-Description': rootProject.properties['description']
-        attributes 'Plugin-Provider': rootProject.properties['provider']
-        attributes 'Plugin-License': rootProject.properties['license']
+        attributes 'Plugin-Class': rootProject.properties['pf.class'].toString() + '.' + rootProject.name.toString()
+        attributes 'Plugin-Id': rootProject.properties['pf.id'].toString()
+        attributes 'Plugin-Version': rootProject.version.toString()
+        attributes 'Plugin-Requires': ( rootProject.properties['pf.requires'].toString() == 'none' ? '' : rootProject.properties['pf.requires'].toString() )
+        attributes 'Plugin-Dependencies': ( rootProject.properties['pf.dependencies'].toString() == 'none' ? '' : rootProject.properties['pf.dependencies'].toString() )
+        attributes 'Plugin-Description': rootProject.properties['pf.description'].toString()
+        attributes 'Plugin-Provider': rootProject.properties['pf.provider'].toString()
+        attributes 'Plugin-License': rootProject.properties['pf.license'].toString()
     }
 
-    setArchiveFileName(archiveBaseName.get() + '-' + archiveVersion.get() + '.' + archiveExtension.get())
+    archiveFileName = project.name + '-' + project.version + '.jar'
+
+    minimize()
 }
 
 artifacts {
