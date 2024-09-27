@@ -1,9 +1,11 @@
 package host.plas.adapters.spigot;
 
+import host.plas.StreamQuests;
 import host.plas.data.QuestManager;
+import host.plas.data.players.QuestPlayer;
 import host.plas.data.require.RequirementType;
-import net.streamline.api.utils.MessageUtils;
 import net.streamline.apib.SLAPIB;
+import singularity.utils.MessageUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -17,6 +19,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.inventory.InventoryEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 public class SpigotListener implements Listener {
@@ -107,4 +110,19 @@ public class SpigotListener implements Listener {
 //
 //        p.get().save();
 //    }
+
+    @EventHandler
+    public void onPlayerInvUpdate(InventoryEvent event) {
+        try {
+            Player player = (Player) event.getViewers().get(0);
+
+            QuestPlayer p = StreamQuests.getLoader().getOrCreate(player.getUniqueId().toString());
+
+            QuestManager.getQuests().forEach(quest -> {
+                quest.checkPlayer(p);
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

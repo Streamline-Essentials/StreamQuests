@@ -3,8 +3,8 @@ package host.plas.adapters.placeholderapi;
 import host.plas.StreamQuests;
 import host.plas.data.QuestManager;
 import host.plas.data.players.QuestPlayer;
-import net.streamline.api.scheduler.BaseRunnable;
-import net.streamline.api.utils.UserUtils;
+import singularity.scheduler.BaseRunnable;
+import singularity.utils.UserUtils;
 
 public class PlaceholderChecker extends BaseRunnable {
     public PlaceholderChecker() {

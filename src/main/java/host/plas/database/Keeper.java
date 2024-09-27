@@ -4,7 +4,7 @@ import host.plas.data.players.QuestPlayer;
 import host.plas.data.require.RequirementType;
 import lombok.Getter;
 import lombok.Setter;
-import net.streamline.api.database.modules.DBKeeper;
+import singularity.database.modules.DBKeeper;
 
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;

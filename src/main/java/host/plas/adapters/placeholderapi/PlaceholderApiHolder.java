@@ -2,13 +2,13 @@ package host.plas.adapters.placeholderapi;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.PlaceholderAPIPlugin;
-import net.streamline.api.holders.StreamlineDependencyHolder;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import singularity.holders.CosmicDependencyHolder;
 
 import java.util.UUID;
 
-public class PlaceholderApiHolder extends StreamlineDependencyHolder<PlaceholderAPIPlugin> {
+public class PlaceholderApiHolder extends CosmicDependencyHolder<PlaceholderAPIPlugin> {
     public PlaceholderApiHolder() {
         super("placeholderapi", "PlaceholderAPI");
     }

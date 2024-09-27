@@ -4,11 +4,11 @@ import host.plas.StreamQuests;
 import host.plas.data.Quest;
 import host.plas.data.QuestManager;
 import host.plas.data.players.QuestPlayer;
-import net.streamline.api.command.ModuleCommand;
-import net.streamline.api.command.StreamlineCommand;
-import net.streamline.api.command.context.CommandContext;
-import net.streamline.api.data.players.StreamPlayer;
-import net.streamline.api.utils.UserUtils;
+import singularity.command.ModuleCommand;
+import singularity.command.CosmicCommand;
+import singularity.command.context.CommandContext;
+import singularity.data.players.CosmicPlayer;
+import singularity.utils.UserUtils;
 
 import java.util.Optional;
 import java.util.concurrent.ConcurrentSkipListSet;
@@ -19,18 +19,18 @@ public class RevokeCommand extends ModuleCommand {
     }
 
     @Override
-    public void run(CommandContext<StreamlineCommand> context) {
+    public void run(CommandContext<CosmicCommand> context) {
         if (! context.isArgUsable(1)) {
             context.sendMessage("&cInvalid arguments. Must be /revokequest <player> <quest>");
             return;
         }
 
-        Optional<StreamPlayer> optionalPlayer = context.getPlayerArg(0);
+        Optional<CosmicPlayer> optionalPlayer = context.getPlayerArg(0);
         if (optionalPlayer.isEmpty()) {
             context.sendMessage("&cInvalid player.");
             return;
         }
-        StreamPlayer player = optionalPlayer.get();
+        CosmicPlayer player = optionalPlayer.get();
 
         QuestPlayer questPlayer = StreamQuests.getLoader().getOrCreate(player.getUuid());
         if (questPlayer == null) {
@@ -58,14 +58,14 @@ public class RevokeCommand extends ModuleCommand {
     }
 
     @Override
-    public ConcurrentSkipListSet<String> doTabComplete(CommandContext<StreamlineCommand> context) {
+    public ConcurrentSkipListSet<String> doTabComplete(CommandContext<CosmicCommand> context) {
         if (context.getArgCount() == 1) {
-            return UserUtils.getOnlinePlayers().values().stream().map(StreamPlayer::getCurrentName).collect(ConcurrentSkipListSet::new, ConcurrentSkipListSet::add, ConcurrentSkipListSet::addAll);
+            return UserUtils.getOnlinePlayers().values().stream().map(CosmicPlayer::getCurrentName).collect(ConcurrentSkipListSet::new, ConcurrentSkipListSet::add, ConcurrentSkipListSet::addAll);
         }
         if (context.getArgCount() == 2) {
-            Optional<StreamPlayer> optionalPlayer = context.getPlayerArg(0);
+            Optional<CosmicPlayer> optionalPlayer = context.getPlayerArg(0);
             if (optionalPlayer.isEmpty()) return new ConcurrentSkipListSet<>();
-            StreamPlayer player = optionalPlayer.get();
+            CosmicPlayer player = optionalPlayer.get();
 
             QuestPlayer questPlayer = StreamQuests.getLoader().getOrCreate(player.getUuid());
             if (questPlayer == null) return new ConcurrentSkipListSet<>();

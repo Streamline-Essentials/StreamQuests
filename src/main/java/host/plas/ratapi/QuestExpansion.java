@@ -4,10 +4,9 @@ import host.plas.StreamQuests;
 import host.plas.data.Quest;
 import host.plas.data.QuestManager;
 import host.plas.data.players.QuestPlayer;
-import net.streamline.api.data.console.StreamSender;
-import net.streamline.api.placeholders.expansions.RATExpansion;
-import net.streamline.api.placeholders.replaceables.IdentifiedReplaceable;
-import net.streamline.api.placeholders.replaceables.IdentifiedUserReplaceable;
+import singularity.data.console.CosmicSender;
+import singularity.placeholders.expansions.RATExpansion;
+import singularity.placeholders.replaceables.IdentifiedUserReplaceable;
 import tv.quaint.utils.MatcherUtils;
 
 import java.util.Optional;
@@ -63,7 +62,7 @@ public class QuestExpansion extends RATExpansion {
                 }).register(); // Register the replaceable.
     }
 
-    public String computeQuest(StreamSender sender, Quest quest, String params) {
+    public String computeQuest(CosmicSender sender, Quest quest, String params) {
         if (params.equals("pretty_name")) {
             return quest.getPrettyName();
         }

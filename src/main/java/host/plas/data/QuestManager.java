@@ -5,13 +5,15 @@ import host.plas.configs.QuestConfig;
 import host.plas.data.players.QuestPlayer;
 import host.plas.data.require.Requirement;
 import host.plas.data.require.RequirementType;
-import net.streamline.api.data.console.StreamSender;
-import net.streamline.api.data.players.StreamPlayer;
-import net.streamline.api.modules.ModuleUtils;
-import net.streamline.api.utils.UserUtils;
+import singularity.data.console.CosmicSender;
+import singularity.modules.ModuleUtils;
+import singularity.utils.UserUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -49,6 +51,32 @@ public class QuestManager {
                 } else {
                     double value = optional.get();
                     if (value < requirement.getAmount()) {
+                        atomicBoolean.set(false);
+                    }
+                }
+            } else if (requirement.getType() == RequirementType.QUEST_COMPLETED) {
+                Optional<Quest> optional = getQuest(requirement.getValue());
+                if (optional.isEmpty()) {
+                    atomicBoolean.set(false);
+                } else {
+                    Quest reqQuest = optional.get();
+                    if (! hasCompletedQuest(player, reqQuest)) {
+                        atomicBoolean.set(false);
+                    }
+                }
+            } else if (requirement.getType() == RequirementType.ITEMS_IN_INVENTORY) {
+                Player bukkitPlayer = Bukkit.getPlayer(UUID.fromString(player.getIdentifier()));
+                if (bukkitPlayer == null) {
+                    atomicBoolean.set(false);
+                } else {
+                    boolean hasItems = requirement.getItems().values().stream().allMatch(item -> {
+                        if (requirement.getAmount() < 0) {
+                            return bukkitPlayer.getInventory().contains(item);
+                        } else {
+                            return bukkitPlayer.getInventory().containsAtLeast(item, (int) requirement.getAmount());
+                        }
+                    });
+                    if (! hasItems) {
                         atomicBoolean.set(false);
                     }
                 }
@@ -111,14 +139,14 @@ public class QuestManager {
     }
 
     public static void runCommands(QuestPlayer player, List<String> commands) {
-        StreamSender sender = player.asSender();
+        CosmicSender sender = player.asSender();
 
         for (String command : commands) {
             runCommand(sender, command);
         }
     }
 
-    public static void runCommand(StreamSender mainSender, String command) {
+    public static void runCommand(CosmicSender mainSender, String command) {
         if (command.startsWith("@c")) {
             ModuleUtils.getConsole().runCommand(padCommand(mainSender, command));
         }
@@ -133,20 +161,24 @@ public class QuestManager {
             part = part.substring("@u:\"".length());
             part = part.substring(0, part.length() - "\"".length());
             String uuid = part;
-            UserUtils.getOrLoadSender(uuid).ifPresent(sender -> {
-                if (sender.isConsole()) {
-                    ModuleUtils.getConsole().runCommand(padCommand(mainSender, command));
-                    return;
-                }
-                sender.runCommand(padCommand(mainSender, command));
-            });
+            CosmicSender sender = UserUtils.getOrCreateSender(uuid);
+            if (sender == null) return;
+
+            if (sender.isConsole()) {
+                ModuleUtils.getConsole().runCommand(padCommand(mainSender, command));
+                return;
+            }
+            sender.runCommand(padCommand(mainSender, command));
         }
         if (command.startsWith("@n")) {
             String part = command.split(" ", 2)[0];
             part = part.substring("@n:\"".length());
             part = part.substring(0, part.length() - "\"".length());
             String name = part;
-            UserUtils.getUUIDFromName(name).flatMap(UserUtils::getOrLoadSender).ifPresent(sender -> {
+            UserUtils.getUUIDFromName(name).ifPresent(uuid -> {
+                CosmicSender sender = UserUtils.getOrCreateSender(uuid);
+                if (sender == null) return;
+
                 if (sender.isConsole()) {
                     ModuleUtils.getConsole().runCommand(padCommand(mainSender, command));
                     return;
@@ -156,7 +188,7 @@ public class QuestManager {
         }
     }
 
-    public static String padCommand(StreamSender mainSender, String command) {
+    public static String padCommand(CosmicSender mainSender, String command) {
         String cmd = command;
         if (cmd.startsWith("@c") || cmd.startsWith("@s") || cmd.startsWith("@o") || cmd.startsWith("@u") || cmd.startsWith("@n")) {
             String[] split = cmd.split(" ", 2);

@@ -12,8 +12,8 @@ import host.plas.events.QuestsListener;
 import host.plas.ratapi.QuestExpansion;
 import lombok.Getter;
 import lombok.Setter;
-import net.streamline.api.modules.ModuleUtils;
-import net.streamline.api.modules.SimpleModule;
+import singularity.modules.ModuleUtils;
+import singularity.modules.SimpleModule;
 import org.pf4j.PluginWrapper;
 
 import java.util.ArrayList;

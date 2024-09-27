@@ -5,9 +5,9 @@ import host.plas.data.Quest;
 import host.plas.data.require.RequirementType;
 import lombok.Getter;
 import lombok.Setter;
-import net.streamline.api.data.console.StreamSender;
-import net.streamline.api.loading.Loadable;
-import net.streamline.api.utils.UserUtils;
+import singularity.data.console.CosmicSender;
+import singularity.loading.Loadable;
+import singularity.utils.UserUtils;
 
 import java.util.Date;
 import java.util.Map;
@@ -123,7 +123,7 @@ public class QuestPlayer implements Loadable<QuestPlayer> {
         return this.completedQuests.keySet().stream().anyMatch(a -> a.equals(identifier)) && this.completedQuests.get(identifier) != null;
     }
 
-    public StreamSender asSender() {
+    public CosmicSender asSender() {
         return UserUtils.getOrCreateSender(getIdentifier());
     }
 

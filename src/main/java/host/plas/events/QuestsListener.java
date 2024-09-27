@@ -1,11 +1,16 @@
 package host.plas.events;
 
 import host.plas.StreamQuests;
+import host.plas.data.Quest;
+import host.plas.data.QuestManager;
 import host.plas.data.players.QuestPlayer;
-import net.streamline.api.data.players.StreamPlayer;
-import net.streamline.api.events.server.LoginCompletedEvent;
-import net.streamline.api.events.server.LogoutEvent;
-import net.streamline.api.modules.ModuleUtils;
+import host.plas.data.require.RequirementType;
+import host.plas.events.own.QuestCompletedEvent;
+import singularity.data.players.CosmicPlayer;
+import singularity.events.server.CosmicChatEvent;
+import singularity.events.server.LoginCompletedEvent;
+import singularity.events.server.LogoutEvent;
+import singularity.modules.ModuleUtils;
 import tv.quaint.events.BaseEventListener;
 import tv.quaint.events.processing.BaseProcessor;
 
@@ -16,19 +21,41 @@ public class QuestsListener implements BaseEventListener {
 
     @BaseProcessor
     public void onPlayerJoin(LoginCompletedEvent event) {
-        StreamPlayer player = event.getPlayer();
+        CosmicPlayer player = event.getPlayer();
 
         StreamQuests.getLoader().getOrCreate(player.getUuid());
     }
 
     @BaseProcessor
     public void onPlayerLeave(LogoutEvent event) {
-        StreamPlayer player = event.getPlayer();
+        CosmicPlayer player = event.getPlayer();
 
         QuestPlayer p = StreamQuests.getLoader().getOrCreate(player.getUuid());
 
         p.save();
 
         StreamQuests.getLoader().unload(player.getUuid());
+    }
+
+    @BaseProcessor
+    public void onPlayerChat(CosmicChatEvent event) {
+        CosmicPlayer player = event.getPlayer();
+
+        QuestPlayer p = StreamQuests.getLoader().getOrCreate(player.getUuid());
+
+        String message = event.getMessage();
+        if (message.startsWith("/")) {
+            QuestManager.fireQuestEvent(player.getUuid(), RequirementType.RUN_COMMAND, message, 1);
+        } else {
+            QuestManager.fireQuestEvent(player.getUuid(), RequirementType.CHAT, message, 1);
+        }
+    }
+
+    @BaseProcessor
+    public void onQuestCompleted(QuestCompletedEvent event) {
+        QuestPlayer player = event.getPlayer();
+        Quest quest = event.getQuest();
+
+        QuestManager.fireQuestEvent(player.getIdentifier(), RequirementType.QUEST_COMPLETED, quest.getIdentifier(), 1.0);
     }
 }

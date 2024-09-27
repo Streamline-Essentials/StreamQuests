@@ -2,10 +2,10 @@ package host.plas.commands;
 
 import host.plas.StreamQuests;
 import host.plas.data.QuestManager;
-import net.streamline.api.command.ModuleCommand;
-import net.streamline.api.command.StreamlineCommand;
-import net.streamline.api.command.context.CommandContext;
-import net.streamline.api.utils.UserUtils;
+import singularity.command.ModuleCommand;
+import singularity.command.CosmicCommand;
+import singularity.command.context.CommandContext;
+import singularity.utils.UserUtils;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -15,7 +15,7 @@ public class ReloadCommand extends ModuleCommand {
     }
 
     @Override
-    public void run(CommandContext<StreamlineCommand> context) {
+    public void run(CommandContext<CosmicCommand> context) {
         context.sendMessage("&eSaving players&8...");
 
         CompletableFuture.runAsync(() -> {

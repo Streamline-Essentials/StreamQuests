@@ -3,6 +3,7 @@ package host.plas.data;
 import host.plas.data.players.QuestPlayer;
 import host.plas.data.require.Requirement;
 import host.plas.data.reward.Reward;
+import host.plas.events.own.QuestCompletedEvent;
 import lombok.Getter;
 import lombok.Setter;
 import tv.quaint.objects.Identifiable;
@@ -61,10 +62,13 @@ public class Quest implements Identifiable {
     }
 
     public void rewardPlayer(QuestPlayer player) {
-        player.completeQuest(this);
+        QuestCompletedEvent event = new QuestCompletedEvent(this, player).fire();
+        if (event.isCancelled()) return;
 
-        getRewards().forEach(reward -> {
-            reward.rewardPlayer(player);
+        event.getPlayer().completeQuest(event.getQuest());
+
+        event.getQuest().getRewards().forEach(reward -> {
+            reward.rewardPlayer(event.getPlayer());
         });
     }
 }

@@ -4,38 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09ffe75c-01fe-4feb-9dae-9fd3bdebfc53" name="Changes" comment="Init.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/adapters/placeholderapi/PlaceholderApiAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/adapters/placeholderapi/PlaceholderApiHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/adapters/placeholderapi/PlaceholderChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/adapters/spigot/SpigotAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/adapters/spigot/SpigotListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/commands/GrantCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/commands/ReloadCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/commands/RevokeCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/configs/QuestConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/configs/upgrades.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/Quest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/QuestManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/players/QuestPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/require/Requirement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/require/RequirementType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/reward/Reward.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/database/Keeper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/database/MyLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/events/QuestsListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/events/own/BreakBlockEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/quests.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="09ffe75c-01fe-4feb-9dae-9fd3bdebfc53" name="Changes" comment="Works.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/events/own/QuestCompletedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/host/plas/utils/ItemUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/ExampleModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/host/plas/StreamQuests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/commands/ExampleCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/configs/ExampleConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/events/ExampleListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/events/own/ExampleEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/ratapi/ExampleExpansion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/host/plas/ratapi/QuestExpansion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/adapters/spigot/SpigotListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/host/plas/adapters/spigot/SpigotListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/configs/upgrades.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/data/Quest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/Quest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/data/QuestManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/QuestManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/data/require/Requirement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/require/Requirement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/data/require/RequirementType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/host/plas/data/require/RequirementType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/host/plas/events/QuestsListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/host/plas/events/QuestsListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,8 +57,23 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "MrDrakify"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Streamline-Essentials/StreamQuests.git",
+    "accountId": "b9952c05-e03e-4201-9d5b-afd692b6f8f1"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -98,6 +93,7 @@
     "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "semeru-11",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/OneDrive/Development/Java/Streamline/Modules/StreamQuests",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -158,7 +154,7 @@
       <workItem from="1711053808758" duration="2925000" />
       <workItem from="1711153763283" duration="914000" />
       <workItem from="1711210381242" duration="4094000" />
-      <workItem from="1711428314092" duration="28123000" />
+      <workItem from="1711428314092" duration="28960000" />
     </task>
     <task id="LOCAL-00001" summary="Init.">
       <option name="closed" value="true" />
@@ -168,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693570214326</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Works.">
+      <option name="closed" value="true" />
+      <created>1711567557191</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711567557191</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +180,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init." />
-    <option name="LAST_COMMIT_MESSAGE" value="Init." />
+    <MESSAGE value="Works." />
+    <option name="LAST_COMMIT_MESSAGE" value="Works." />
   </component>
   <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
     <option name="sizePresets">

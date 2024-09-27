@@ -2,8 +2,8 @@ package host.plas.database;
 
 import host.plas.StreamQuests;
 import host.plas.data.players.QuestPlayer;
-import net.streamline.api.database.modules.DBKeeper;
-import net.streamline.api.loading.Loader;
+import singularity.database.modules.DBKeeper;
+import singularity.loading.Loader;
 
 public class MyLoader extends Loader<QuestPlayer> {
     @Override
